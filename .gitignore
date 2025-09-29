@@ -4,7 +4,6 @@ backend/node_modules/
 frontend/node_modules/
 
 # Environment variables
-.env
 backend/.env
 frontend/.env
 
@@ -23,3 +22,4 @@ Thumbs.db
 
 # Backend uploads (user files)
 backend/uploads/
+config.bat

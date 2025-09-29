@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+export const dynamic = 'force-dynamic';
+
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/auth-context';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -37,8 +39,13 @@ export default function NewProductPage() {
   const [images, setImages] = useState<File[]>([]);
   const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
+  useEffect(() => {
+    if (!user || user.role !== 'admin') {
+      router.replace('/');
+    }
+  }, [user, router]);
+
   if (!user || user.role !== 'admin') {
-    router.push('/');
     return null;
   }
 
